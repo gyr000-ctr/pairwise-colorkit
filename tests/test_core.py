@@ -144,4 +144,5 @@ CASES = [
 
 @pytest.mark.parametrize("name,check", CASES, ids=[c[0] for c in CASES])
 def test_spec(name, check):
-    assert check() is True
+    # CASES 里存的是检查函数名，需要按名字解析成函数再调用。
+    assert globals()[check]() is True
